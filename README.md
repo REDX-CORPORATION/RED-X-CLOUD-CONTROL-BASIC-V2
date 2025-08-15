@@ -19,7 +19,7 @@ Perfect for:
 ## ⚙️ How It Works
 
 1. Run the `RED-X CLOUD CONTROL BASIC V2.exe` on your Windows PC.  
-2. A popup window will display your **IPv4 address** and the port number (e.g., `http://192.168.0.214:6969/redx`).  
+2. A popup window will display your **IPv4 address** and the port number (e.g., `http://192.168.0.214:6969`).  
 3. On any device connected to the same Wi-Fi, open a browser and navigate to that address.  
 4. The homepage presented includes buttons that send HTTP commands to your EXE.  
 5. Pressing buttons triggers predefined actions within your application—like toggling cheats, running scripts, or other supported functionality.  
@@ -36,6 +36,14 @@ On a mobile browser or another PC connected to the same network, open the URL di
 
 ### 3️⃣ Interact and Control
 Use the on-screen controls (buttons, toggles, etc.) to send commands back to the host EXE. The interface seamlessly relays your actions via HTTP calls to execute logic on the host machine.
+
+---
+
+## 🖼️ Preview
+
+<p align="center">
+  <img src="https://i.ibb.co.com/5gJWB5Wb/image.png" alt="RED-X Cloud Control Preview" width="700"/>
+</p>
 
 ---
 
