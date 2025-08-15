@@ -6,12 +6,12 @@
 
 ## 📌 About This Project
 
-**RED-X CLOUD CONTROL BASIC V2** is the enhanced version of the original RED-X remote control system. Now, users don’t need to touch or send HTML files—the EXE auto-generates and displays the local IPv4 address via a popup window. Just open that address on any device connected to the same network to control your application remotely.
+**RED-X CLOUD CONTROL BASIC V2** is the enhanced version of the original RED-X CLOUD CONTROL BASIC. Now, users don’t need to touch or send HTML files—the EXE auto-generates and displays the local IPv4 address via a popup window. Just open that address on any device connected to the same network to control your application remotely.
 
 Perfect for:
 
 - ✅ Beginners diving into local networking and remote control  
-- ✅ Fast and simple setups (no HTML editing)  
+- ✅ Fast and simple setups
 - ✅ Remote triggering of actions from mobile or browser—no backend needed  
 
 ---
@@ -19,7 +19,7 @@ Perfect for:
 ## ⚙️ How It Works
 
 1. Run the `RED-X CLOUD CONTROL BASIC V2.exe` on your Windows PC.  
-2. A popup window will display your **IPv4 address** and the port number (e.g., `http://192.168.0.214:6969`).  
+2. A popup window will display your **IPv4 address** and the port number (e.g., `http://192.168.0.214:6969/redx`).  
 3. On any device connected to the same Wi-Fi, open a browser and navigate to that address.  
 4. The homepage presented includes buttons that send HTTP commands to your EXE.  
 5. Pressing buttons triggers predefined actions within your application—like toggling cheats, running scripts, or other supported functionality.  
