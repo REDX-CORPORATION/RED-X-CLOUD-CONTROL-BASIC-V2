@@ -1,0 +1,501 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>RED-X CLOUD CONTROL</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;800&display=swap" rel="stylesheet">
+
+    <!-- Particles.js -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            height: 100%;
+            font-family: 'Orbitron', sans-serif;
+            background: linear-gradient(135deg, #0a0525, #1a0630);
+            color: #eee;
+            overflow: hidden;
+        }
+
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            background: linear-gradient(135deg, #0a0525, #1a0630);
+        }
+
+        /* Top Navigation Bar */
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(10, 5, 25, 0.85);
+            backdrop-filter: blur(5px);
+            border-bottom: 1px solid rgba(138, 43, 226, 0.3);
+            z-index: 20;
+            padding: 0.5rem 0;
+            box-shadow: 0 4px 20px rgba(75, 0, 130, 0.5);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav-tab {
+            padding: 0.8rem 1.8rem;
+            margin: 0 0.5rem;
+            background: rgba(40, 20, 80, 0.3);
+            border: 1px solid rgba(138, 43, 226, 0.3);
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #b19cd9;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .nav-tab:hover {
+                background: rgba(75, 0, 130, 0.4);
+                color: #e0c3fc;
+                border-color: #9370db;
+                box-shadow: 0 0 15px rgba(147, 112, 219, 0.5);
+            }
+
+            .nav-tab.active {
+                background: rgba(75, 0, 130, 0.5);
+                color: #fff;
+                border-color: #8a2be2;
+                box-shadow: 0 0 15px rgba(138, 43, 226, 0.7);
+            }
+
+            .nav-tab::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 3px;
+                background: linear-gradient(90deg, transparent, #8a2be2, transparent);
+                opacity: 0;
+                transition: opacity 0.3s ease;
+            }
+
+            .nav-tab.active::after,
+            .nav-tab:hover::after {
+                opacity: 1;
+            }
+
+        .container {
+            position: relative;
+            z-index: 10;
+            max-width: 500px;
+            margin: 8rem auto 2rem;
+            padding: 2.5rem;
+            background: rgba(20, 10, 40, 0.45);
+            border: 1px solid rgba(138, 43, 226, 0.2);
+            border-radius: 15px;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 8px 32px rgba(75, 0, 130, 0.6), 0 0 20px rgba(138, 43, 226, 0.4), inset 0 0 10px rgba(147, 112, 219, 0.2);
+            text-align: center;
+        }
+
+        .ip-section {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: rgba(30, 15, 60, 0.3);
+            border-radius: 10px;
+            border: 1px solid rgba(138, 43, 226, 0.2);
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            letter-spacing: 3px;
+            background: linear-gradient(to right, #9370db, #8a2be2, #6a5acd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 8px rgba(138, 43, 226, 0.4), 0 0 20px rgba(138, 43, 226, 0.3);
+            margin-bottom: 2.2rem;
+            position: relative;
+        }
+
+            h1::after {
+                content: '';
+                position: absolute;
+                bottom: -10px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 70%;
+                height: 3px;
+                background: linear-gradient(90deg, transparent, #8a2be2, transparent);
+            }
+
+        button {
+            cursor: pointer;
+            background: linear-gradient(to right, #4b0082, #483d8b);
+            color: #e6e6fa;
+            border: none;
+            padding: 14px 32px;
+            margin: 12px 10px;
+            font-size: 1.1rem;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            box-shadow: 0 5px 15px rgba(75, 0, 130, 0.5), inset 0 0 8px rgba(147, 112, 219, 0.6);
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 1px;
+        }
+
+            button:hover {
+                background: linear-gradient(to right, #6a5acd, #7b68ee);
+                color: #ffffff;
+                box-shadow: 0 8px 25px rgba(138, 43, 226, 0.7), inset 0 0 15px rgba(176, 196, 222, 0.8);
+                transform: translateY(-3px);
+            }
+
+            button:active {
+                transform: translateY(1px);
+                box-shadow: 0 3px 10px rgba(75, 0, 130, 0.4), inset 0 0 8px rgba(147, 112, 219, 0.6);
+            }
+
+            button::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+                transition: 0.5s;
+            }
+
+            button:hover::before {
+                left: 100%;
+            }
+
+        #ipInput {
+            padding: 12px;
+            font-size: 1.05rem;
+            border: 1px solid rgba(138, 43, 226, 0.4);
+            border-radius: 8px;
+            background: rgba(15, 5, 35, 0.5);
+            color: #e0c3fc;
+            text-align: center;
+            width: 100%;
+            max-width: 320px;
+            box-shadow: 0 0 15px rgba(138, 43, 226, 0.3), inset 0 0 8px rgba(147, 112, 219, 0.3);
+            margin-bottom: 1rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+            #ipInput:focus {
+                border-color: #9370db;
+                box-shadow: 0 0 20px rgba(147, 112, 219, 0.5), inset 0 0 10px rgba(176, 196, 222, 0.4);
+            }
+
+            #ipInput::placeholder {
+                color: #9370db;
+            }
+
+        #status {
+            margin-top: 2rem;
+            padding: 0.8rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            background: rgba(30, 15, 60, 0.4);
+            border-radius: 8px;
+            border: 1px solid rgba(138, 43, 226, 0.2);
+            min-height: 2.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-shadow: 0 0 8px rgba(147, 112, 219, 0.7), 0 0 20px rgba(138, 43, 226, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+            #status::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(90deg, transparent, rgba(138, 43, 226, 0.1), transparent);
+                animation: statusGlow 3s infinite linear;
+            }
+
+        @keyframes statusGlow {
+            0% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        .ip-display {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 0.5rem;
+        }
+
+            .ip-display span {
+                margin-right: 1rem;
+                color: #d8bfd8;
+            }
+
+        .hidden {
+            display: none;
+        }
+
+        .settings-panel {
+            display: none;
+            margin-top: 1.5rem;
+            padding: 1.2rem;
+            background: rgba(25, 12, 50, 0.4);
+            border-radius: 10px;
+            border: 1px solid rgba(138, 43, 226, 0.2);
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            padding: 0.8rem;
+            font-size: 0.85rem;
+            color: #9370db;
+            background: rgba(10, 5, 25, 0.7);
+            z-index: 15;
+            border-top: 1px solid rgba(138, 43, 226, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div id="particles-js"></div>
+
+    <!-- Top Navigation Bar -->
+    <div class="top-bar">
+        <div class="nav-container">
+            <div class="nav-tab active">Aimbot</div>
+            <div class="nav-tab">Sniper</div>
+            <div class="nav-tab">Extra</div>
+            <div class="nav-tab" id="settingsTab">Settings</div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>RED-X CLOUD CONTROL</h1>
+
+        <div class="ip-section">
+            <div id="ipEntry">
+                <input type="text" id="ipInput" placeholder="Enter IPv4 (e.g. 192.168.0.100)" />
+                <button onclick="saveIP()">Save IP</button>
+            </div>
+
+            <div class="ip-display hidden" id="ipDisplay">
+                <span>Server IP: <strong id="currentIP"></strong></span>
+                <button onclick="showEditIP()">Edit IP</button>
+            </div>
+        </div>
+
+        <button onclick="sendCommand('/load')">Load Aimbot</button>
+        <button onclick="sendCommand('/toggle')">Toggle Aimbot</button>
+        <button onclick="sendCommand('/bind')">Bind Key</button>
+        <button onclick="sendCommand('/location')">Chams Menu</button>
+        <button onclick="sendCommand('/exit')">Exit Exe</button>
+
+        <div id="status">Connecting...</div>
+
+        <div class="settings-panel" id="settingsPanel">
+            <h3>Settings</h3>
+            <div class="ip-display">
+                <span>Server IP: <strong id="settingsCurrentIP"></strong></span>
+                <button onclick="showEditIP()">Edit IP</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        RED-X CLOUD CONTROL v2.0 | Secured Connection
+    </div>
+
+    <script>
+        let baseURL = '';
+        let ipSaved = false;
+
+        // Load saved IP or default
+        function loadIP() {
+            const savedIP = localStorage.getItem('serverIP') || '192.168.0.214';
+            document.getElementById('ipInput').value = savedIP;
+            baseURL = `http://${savedIP}:6969`;
+
+            // If IP exists in storage, hide input and show display
+            if (localStorage.getItem('serverIP')) {
+                document.getElementById('ipEntry').classList.add('hidden');
+                document.getElementById('ipDisplay').classList.remove('hidden');
+                document.getElementById('currentIP').textContent = savedIP;
+                document.getElementById('settingsCurrentIP').textContent = savedIP;
+                ipSaved = true;
+            }
+        }
+
+        // Save IP, validate, update baseURL and status
+        function saveIP() {
+            const ip = document.getElementById('ipInput').value.trim();
+            if (!isValidIP(ip)) {
+                setStatus('❌ Invalid IP address format!', false);
+                return;
+            }
+            localStorage.setItem('serverIP', ip);
+            baseURL = `http://${ip}:6969`;
+
+            // Hide input and show display
+            document.getElementById('ipEntry').classList.add('hidden');
+            document.getElementById('ipDisplay').classList.remove('hidden');
+            document.getElementById('currentIP').textContent = ip;
+            document.getElementById('settingsCurrentIP').textContent = ip;
+            ipSaved = true;
+
+            updateStatus();
+            setStatus(`✅ IP set to ${ip}`, true);
+        }
+
+        // Show edit IP fields
+        function showEditIP() {
+            document.getElementById('ipEntry').classList.remove('hidden');
+            document.getElementById('ipDisplay').classList.add('hidden');
+        }
+
+        // Validate IPv4 using regex
+        function isValidIP(ip) {
+            const regex = /^(25[0-5]|2[0-4]\d|1\d{2}|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d{2}|[1-9]?\d)){3}$/;
+            return regex.test(ip);
+        }
+
+        async function sendCommand(endpoint) {
+            if (!ipSaved) {
+                setStatus('❌ Please save a valid IP first!', false);
+                return;
+            }
+
+            try {
+                const res = await fetch(baseURL + endpoint);
+                const text = await res.text();
+                setStatus(text, true);
+            } catch (err) {
+                setStatus('❌ Error connecting to server!', false);
+            }
+        }
+
+        async function updateStatus() {
+            if (!ipSaved) return;
+
+            try {
+                const res = await fetch(baseURL + '/status');
+                const text = await res.text();
+                setStatus(text, true);
+            } catch {
+                setStatus('❌ Error connecting to server!', false);
+            }
+        }
+
+        function setStatus(text, isSuccess) {
+            const el = document.getElementById('status');
+            el.textContent = text || 'No response';
+            el.style.color = isSuccess ? '#e0c3fc' : '#ff6b6b';
+            el.style.textShadow = isSuccess
+                ? '0 0 8px rgba(147, 112, 219, 0.7), 0 0 20px rgba(138, 43, 226, 0.5)'
+                : '0 0 8px rgba(255, 107, 107, 0.7), 0 0 20px rgba(255, 107, 107, 0.5)';
+        }
+
+        // Tab functionality
+        document.getElementById('settingsTab').addEventListener('click', function () {
+            const panel = document.getElementById('settingsPanel');
+            panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
+        });
+
+        // Initialize IP input and baseURL
+        loadIP();
+
+        // Status update every 1 sec (1000ms)
+        setInterval(updateStatus, 1000);
+        updateStatus();
+
+        // Particles.js config
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 180, density: { enable: true, value_area: 900 } },
+                color: { value: '#9370db' },
+                shape: { type: 'circle' },
+                opacity: { value: 0.7, random: true },
+                size: { value: 4, random: true },
+                line_linked: {
+                    enable: true,
+                    distance: 120,
+                    color: '#8a2be2',
+                    opacity: 0.5,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 2.5,
+                    direction: 'none',
+                    random: true,
+                    straight: false,
+                    bounce: false
+                }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: {
+                    onhover: { enable: true, mode: 'repulse' },
+                    onclick: { enable: true, mode: 'push' },
+                    resize: true
+                },
+                modes: {
+                    repulse: { distance: 70, duration: 0.5 },
+                    push: { particles_nb: 4 }
+                }
+            },
+            retina_detect: true
+        });
+    </script>
+</body>
+</html>
