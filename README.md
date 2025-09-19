@@ -20,7 +20,7 @@
 ## 🖼️ Preview
 
 <p align="center">
-  ![RED-X Logo](https://i.ibb.co.com/5gJWB5Wb/image.png)
+  ![RED-X Logo](image.png)
 </p>
 
 ---
