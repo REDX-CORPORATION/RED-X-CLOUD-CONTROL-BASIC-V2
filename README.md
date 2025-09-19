@@ -19,9 +19,8 @@
 
 ## 🖼️ Preview
 
-<p align="center">
   ![RED-X Logo](image.png)
-</p>
+
 
 ---
 
