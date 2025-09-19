@@ -20,7 +20,7 @@
 ## 🖼️ Preview
 
 <p align="center">
-  <img src="https://i.ibb.co.com/5gJWB5Wb/image.png](https://i.ibb.co.com/5gJWB5Wb/image.png" alt="RED-X Cloud Control Preview" width="700"/>
+  ![RED-X Logo]([image.png](https://i.ibb.co.com/5gJWB5Wb/image.png))
 </p>
 
 ---
